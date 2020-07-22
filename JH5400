@@ -1,0 +1,45 @@
+'''by pengyun
+verison01 add write_To function to count fail info 2020年7月21日14:48:58 '''
+
+import os
+import pandas as pd
+# import Pyinstaller
+
+class Folder():
+    def __init__(self,foldername):
+        self.name = foldername
+
+    def write_TO(self):
+        files = os.listdir(self.name)
+        file_total_name = [os.path.join(self.name,i) for i in files]
+        slot_dut = []
+        status = []
+        for filename in file_total_name:
+            with open(filename) as file:
+                lines = file.readlines()
+                # count = 0
+                for line in lines:
+                    if 'EFA FLOW' in line:
+                        slot_dut.append(filename.split('\\')[-1][:-4]) # "Z:\ZONE01\SLOT02\20200721_000001[128GB_100%Endurance_fix17_20200706][67]\UFS3.0_SLOT02_DUT01.log"
+                        status.append(line.split(']')[-1].strip())
+                        break
+                    else:
+                        continue
+        df = pd.DataFrame([slot_dut,status],index=['slot_dut_num','Fail_info']).T
+        return df
+        # df.to_csv('fail_info.csv')
+
+
+def main():
+
+    path = input('input your folder name : use , to split')
+    DF = pd.DataFrame()
+    for i in path.split(','):
+        print(path)
+        folder = Folder(i)
+        df = folder.write_TO()
+        DF = DF.append(df)
+    DF.to_csv('Fail_info_analyse.csv')
+
+if __name__ == '__main__':
+    main()
