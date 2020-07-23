@@ -1,0 +1,9 @@
+'''use Pyinstaller to package .py document'''
+# 1.安装Pyinstaller 
+pip install Pyinstaller
+成功安装之后会在python\\python3.5\\Script 文件夹下出现pyinstaller.exe，并且已经添加到环境变量中，可以直接使用
+# 2.打包python 程序
+cd 到待打包的python程序文件夹
+pyinstaller yourpython.py 就成功了
+# 3. 最后使用原生的python程序，不要使用第三方库，否则会出现打包失败的情况。
+
