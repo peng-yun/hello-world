@@ -5,5 +5,10 @@ pip install Pyinstaller
 # 2.打包python 程序
 cd 到待打包的python程序文件夹
 pyinstaller yourpython.py 就成功了
-# 3. 最后使用原生的python程序，不要使用第三方库，否则会出现打包失败的情况。
+# 3. 最后使用原生的python程序，不要使用第三方库，否则会出现打包失败的情况
+
+update：
+1. .csv 文件可以直接通过open（）函数来读取
+2. file.write(string + '\n') 是写入的方法
+
 
