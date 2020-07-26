@@ -11,4 +11,8 @@ update：
 1. .csv 文件可以直接通过open（）函数来读取
 2. file.write(string + '\n') 是写入的方法
 
-
+通过直接的输入字符串
+path = "C:\Users\E905937\Desktop\6号机\file\20200716_140556[256GB_100%Endurance_Fix17][45]"
+通过input函数来输入字符串
+path = input('input your folder names:')
+一个会被转义字符所影响，另一个不会被转义字符串所影响。
